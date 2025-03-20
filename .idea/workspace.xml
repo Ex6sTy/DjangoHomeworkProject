@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d4fd4fe-2026-4f94-9aeb-23b857504cce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/newapp/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newapp/urls.py" afterDir="false" />
+    <list default="true" id="2d4fd4fe-2026-4f94-9aeb-23b857504cce" name="Changes" comment="Проработка архитектуры проекта">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catalog/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/catalog/contacts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/catalog/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoHomeworkProject/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoHomeworkProject/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoHomeworkProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoHomeworkProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoHomeworkProject/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newapp/urls.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +27,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,9 +65,11 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "Django Server.DjangoHomeworkProject.executor": "Run",
+    "Python.run.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "Feature1",
     "last_opened_file_path": "C:/Users/aboga/PycharmProjects/DjangoHomeworkProject/manage.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,6 +79,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aboga\PycharmProjects\DjangoHomeworkProject\templates" />
+      <recent name="C:\Users\aboga\PycharmProjects\DjangoHomeworkProject\static\js" />
+      <recent name="C:\Users\aboga\PycharmProjects\DjangoHomeworkProject\static\css" />
+      <recent name="C:\Users\aboga\PycharmProjects\DjangoHomeworkProject\catalog" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.run">
     <configuration name="run" type="PythonConfigurationType" factoryName="Python">
       <module name="DjangoHomeworkProject" />
@@ -145,11 +159,30 @@
       <option name="presentableId" value="Default" />
       <updated>1742391378372</updated>
       <workItem from="1742391381872" duration="799000" />
-      <workItem from="1742392199152" duration="973000" />
+      <workItem from="1742392199152" duration="1367000" />
+      <workItem from="1742393583714" duration="312000" />
+      <workItem from="1742393904516" duration="2185000" />
+      <workItem from="1742468692389" duration="2856000" />
     </task>
+    <task id="LOCAL-00001" summary="Проработка архитектуры проекта">
+      <option name="closed" value="true" />
+      <created>1742393277347</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742393277347</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Проработка архитектуры проекта" />
+    <option name="LAST_COMMIT_MESSAGE" value="Проработка архитектуры проекта" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DjangoHomeworkProject$run.coverage" NAME="run Coverage Results" MODIFIED="1742470967233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
