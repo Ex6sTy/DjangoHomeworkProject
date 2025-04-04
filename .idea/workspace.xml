@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d4fd4fe-2026-4f94-9aeb-23b857504cce" name="Changes" comment="- Добавлены зависимости psycopg.&#10;- Файл с зависимостями (pyproject.toml) исправлен">
+    <list default="true" id="2d4fd4fe-2026-4f94-9aeb-23b857504cce" name="Changes" comment="Создание шаблона для страницы товара&#10;Регистрация URL в urls.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +20,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Feature2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,12 +39,12 @@
     &quot;assignee&quot;: &quot;Ex6sTy&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Ex6sTy/DjangoHomeworkProject.git&quot;,
-    &quot;accountId&quot;: &quot;44e00e8b-d99f-404d-94ba-a04d2e01c460&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ex6sTy/DjangoHomeworkProject.git",
+    "accountId": "72966312-5157-41a8-8f0d-94cca838e858"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -52,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.DjangoHomeworkProject.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.contacts.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Feature2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/aboga/PycharmProjects/DjangoHomeworkProject/catalog/templates/catalog&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.DjangoHomeworkProject.executor": "Run",
+    "JavaScript Debug.contacts.html.executor": "Run",
+    "JavaScript Debug.home.html.executor": "Run",
+    "Python.run.executor": "Run",
+    "Python.settings.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "Feature3",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/aboga/PycharmProjects/DjangoHomeworkProject/catalog/templates/catalog",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\aboga\PycharmProjects\DjangoHomeworkProject\catalog\templates\catalog" />
@@ -172,6 +174,7 @@
       <workItem from="1743250307086" duration="602000" />
       <workItem from="1743708001229" duration="2363000" />
       <workItem from="1743757587700" duration="2229000" />
+      <workItem from="1743778351165" duration="704000" />
     </task>
     <task id="LOCAL-00001" summary="Проработка архитектуры проекта">
       <option name="closed" value="true" />
@@ -229,7 +232,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743759465254</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Создание контроллера для страницы одного товара, принимающего pk товара и извлекающего информацию из базы данных">
+      <option name="closed" value="true" />
+      <created>1743778480134</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1743778480134</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Создание шаблона для страницы товара&#10;Регистрация URL в urls.py">
+      <option name="closed" value="true" />
+      <created>1743778717534</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743778717534</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +272,9 @@
     <MESSAGE value="Исправление структуры проекта(2)." />
     <MESSAGE value="Основные изменения за сессию:&#10;&#10;- Обновлен файл `README.md` с инструкциями по установке, настройке и запуску проекта.&#10;- Настроены переменные окружения в `.env` для скрытия чувствительных данных (например, настройки подключения к базе данных).&#10;- Исправлены ошибки в файле миграции `01_initial.py`, добавлены правильные поля и связи между моделями.&#10;- Реализована команда для заполнения базы данных тестовыми данными через `fill_db.py`.&#10;- Созданы фикстуры для моделей `Category` и `Product`, данные успешно экспортированы и загружены в базу.&#10;- Настроены админка для отображения и фильтрации продуктов и категорий.&#10;- Настроены запросы в Django shell для работы с базой данных: создание, обновление и удаление данных.&#10;&#10;Реализованы ключевые изменения для корректной работы с проектом." />
     <MESSAGE value="- Добавлены зависимости psycopg.&#10;- Файл с зависимостями (pyproject.toml) исправлен" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Добавлены зависимости psycopg.&#10;- Файл с зависимостями (pyproject.toml) исправлен" />
+    <MESSAGE value="Создание контроллера для страницы одного товара, принимающего pk товара и извлекающего информацию из базы данных" />
+    <MESSAGE value="Создание шаблона для страницы товара&#10;Регистрация URL в urls.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Создание шаблона для страницы товара&#10;Регистрация URL в urls.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DjangoHomeworkProject$settings.coverage" NAME="settings Coverage Results" MODIFIED="1742654629551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />

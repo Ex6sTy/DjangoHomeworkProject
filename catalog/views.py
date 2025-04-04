@@ -1,14 +1,21 @@
-from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
+from django.shortcuts import render
 from .models import Product
-
 
 def home_view(request):
     """
     Контроллер для главной страницы
     """
-    latest_products = Product.objects.order_by('-created_at')[:5]
-    print("Последние 5 продуктов:", list(latest_products))
-    return render(request, 'catalog/home.html')
+    # Получаем все продукты из базы данных
+    products = Product.objects.all()
+
+    # Пагинация: показываем по 10 товаров на странице
+    paginator = Paginator(products, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'catalog/home.html', {'page_obj': page_obj})
+
 
 
 def contacts_view(request):
