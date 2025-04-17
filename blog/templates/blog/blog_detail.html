@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">{{ post.title }}</h1>
+    {% if post.preview %}
+        <img src="{{ post.preview.url }}" class="img-fluid mb-3" alt="{{ post.title }}">
+    {% endif %}
+    <p class="text-muted">Создано: {{ post.created_at|date:"d E Y" }} | Просмотров: {{ post.views }}</p>
+    <div class="mb-4">
+        {{ post.content|linebreaks }}
+    </div>
+    <a href="{% url 'blog_edit' post.pk %}" class="btn btn-outline-secondary">Редактировать</a>
+    <a href="{% url 'blog_delete' post.pk %}" class="btn btn-outline-danger">Удалить</a>
+</div>
+{% endblock %}
