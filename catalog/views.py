@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Product
 from .forms import ProductForm
@@ -6,9 +6,10 @@ from .forms import ProductForm
 
 class HomeView(ListView):
     model = Product
+    ordering = ['-created_at']
+    paginate_by = 10
     template_name = 'catalog/home.html'
     context_object_name = 'page_obj'
-    paginate_by = 10
 
 
 class ContactView(TemplateView):
@@ -34,4 +35,17 @@ class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/add_product.html'
+    success_url = reverse_lazy('home')
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_form.html'
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'catalog/product_confirm_delete.html'
     success_url = reverse_lazy('home')
