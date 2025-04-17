@@ -2,12 +2,14 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from .models import BlogPost
+from .forms import BlogPostForm
 
 
 class BlogListView(ListView):
     model = BlogPost
     template_name = 'blog/blog_list.html'
-    context_object_name = 'posts'
+    context_object_name = 'page_obj'
+    paginate_by = 6
 
     def get_queryset(self):
         return BlogPost.objects.filter(is_published=True).order_by('-created_at')
@@ -36,14 +38,14 @@ class BlogDetailView(DetailView):
 
 class BlogCreateView(CreateView):
     model = BlogPost
-    fields = ['title', 'content', 'preview', 'is_published']
+    form_class = BlogPostForm
     template_name = 'blog/blog_form.html'
     success_url = reverse_lazy('blog_list')
 
 
 class BlogUpdateView(UpdateView):
     model = BlogPost
-    fields = ['title', 'content', 'preview', 'is_published']
+    form_class = BlogPostForm
     template_name = 'blog/blog_form.html'
 
     def get_success_url(self):
@@ -54,3 +56,4 @@ class BlogDeleteView(DeleteView):
     model = BlogPost
     template_name = 'blog/blog_confirm_delete.html'
     success_url = reverse_lazy('blog_list')
+

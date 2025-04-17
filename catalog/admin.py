@@ -1,5 +1,18 @@
 from django.contrib import admin
-from .models import Product, Category
+from django.utils.html import format_html
+from .models import Product, Category, ProductImage
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1
+    readonly_fields = ('preview',)
+
+    def preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="80"/>', obj.image.url)
+        return "—"
+    preview.short_description = "Превью"
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -7,6 +20,12 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'category')
-    list_filter = ('category',)
-    search_fields = ('name', 'description')
+    list_display = ('id', 'name', 'price', 'category', 'preview_image')
+    readonly_fields = ('preview_image',)
+    inlines = [ProductImageInline]
+
+    def preview_image(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="80" style="border-radius:4px;" />', obj.image.url)
+        return "—"
+    preview_image.short_description = "Изображение"
