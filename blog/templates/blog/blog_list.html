@@ -1,22 +1,55 @@
 {% extends "base_generic.html" %}
+
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Блог</h1>
+
+    <div class="text-end mb-4">
+        <a href="{% url 'blog_create' %}" class="btn btn-success">Создать статью</a>
+    </div>
+
     <div class="row">
-        {% for post in posts %}
+        {% for post in page_obj %}
         <div class="col-md-6 mb-4">
             <div class="card h-100 shadow-sm">
                 {% if post.preview %}
-                    <img src="{{ post.preview.url }}" class="card-img-top" alt="{{ post.title }}">
+                <img src="{{ post.preview.url }}" class="card-img-top" alt="{{ post.title }}"
+                     style="max-height: 200px; object-fit: cover;">
                 {% endif %}
                 <div class="card-body">
                     <h4 class="card-title">{{ post.title }}</h4>
+                    <p class="text-muted small mb-2">
+                        Дата: {{ post.created_at|date:"d.m.Y" }} |
+                        Просмотров: {{ post.views }}
+                    </p>
                     <p class="card-text">{{ post.content|truncatewords:25 }}</p>
-                    <a href="{% url 'blog_detail' post.pk %}" class="btn btn-outline-primary">Читать далее</a>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="btn-group" role="group">
+                        <a href="{% url 'blog_detail' post.pk %}" class="btn btn-outline-primary btn-sm">Читать</a>
+                        <a href="{% url 'blog_edit' post.pk %}" class="btn btn-outline-warning btn-sm">Редактировать</a>
+                        <a href="{% url 'blog_delete' post.pk %}" class="btn btn-outline-danger btn-sm"
+                           onclick="return confirm('Удалить статью?');">Удалить</a>
+                    </div>
                 </div>
             </div>
         </div>
+        {% empty %}
+        <p>Нет опубликованных статей.</p>
         {% endfor %}
+    </div>
+
+    <div class="mt-4 text-center">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-secondary btn-sm">Назад</a>
+        {% endif %}
+
+        <span class="mx-3">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-secondary btn-sm">Вперёд</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
+
