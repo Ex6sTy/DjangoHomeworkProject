@@ -33,6 +33,15 @@
               {% endfor %}
             </div>
           {% endif %}
+
+          {# ►►► 3. Кнопки редактирования и удаления ◄◄◄ #}
+          {% if user.is_authenticated %}
+            <div class="mt-4 text-center">
+              <a href="{% url 'product_edit' product.pk %}" class="btn btn-warning btn-sm">Редактировать</a>
+              <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger btn-sm"
+                 onclick="return confirm('Удалить этот товар?');">Удалить</a>
+            </div>
+          {% endif %}
         </div>
       </div>
 
@@ -40,4 +49,3 @@
   </div>
 </div>
 {% endblock %}
-
