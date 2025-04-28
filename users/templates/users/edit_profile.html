@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Редактирование профиля</h2>
+    <form method="post" enctype="multipart/form-data" class="mx-auto" style="max-width: 400px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-3">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}

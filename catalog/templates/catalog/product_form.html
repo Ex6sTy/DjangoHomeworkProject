@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">
+    {{ view.object.pk|yesno:"Редактировать товар,Добавить товар" }}
+  </h2>
+  <form method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-end">
+      <button type="submit" class="btn btn-outline-primary">Сохранить</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{{ image_formset.management_form }}
+{% for form in image_formset.forms %}
+  <div class="border p-3 rounded mb-3">
+    {{ form.as_p }}
+  </div>
+{% endfor %}
+<button type="button" class="btn btn-outline-secondary" hx-post="{% url 'product_add_image_form' %}" hx-target="#gallery-forms">Добавить ещё</button>
