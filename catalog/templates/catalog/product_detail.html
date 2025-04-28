@@ -34,17 +34,28 @@
             </div>
           {% endif %}
 
-          {# ►►► 3. Кнопки редактирования и удаления ◄◄◄ #}
-          {% if user.is_authenticated %}
-            <div class="mt-4 text-center">
-              <a href="{% url 'product_edit' product.pk %}" class="btn btn-warning btn-sm">Редактировать</a>
-              <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger btn-sm"
-                 onclick="return confirm('Удалить этот товар?');">Удалить</a>
-            </div>
+          {# ►►► 3. Кнопки ◄◄◄ #}
+          <div class="mt-4 text-center">
+          {# Только владелец может редактировать #}
+          {% if user.is_authenticated and user == product.owner %}
+            <a href="{% url 'product_edit' product.pk %}" class="btn btn-warning btn-sm">Редактировать</a>
+            <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger btn-sm"
+               onclick="return confirm('Удалить этот товар?');">Удалить</a>
+          {# Модератор может только удалять (если не владелец) #}
+          {% elif user.is_authenticated and user.has_perm("catalog.delete_product") %}
+            <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger btn-sm"
+               onclick="return confirm('Удалить этот товар?');">Удалить</a>
+          {% endif %}
+        
+          {# Модератор может снять с публикации #}
+          {% if user.is_authenticated and user.has_perm("catalog.can_unpublish_product") %}
+            <form method="post" action="{% url 'product_unpublish' product.pk %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-secondary btn-sm">Снять с публикации</button>
+            </form>
           {% endif %}
         </div>
       </div>
-
     </div>
   </div>
 </div>

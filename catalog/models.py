@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
@@ -23,12 +24,33 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
 
+    STATUS_CHOICES = [
+        ('draft', 'Черновик'),
+        ('published', 'Опубликован'),
+        ('unpublished', 'Снято с публикации'),
+    ]
+    status = models.CharField(
+        max_length=16,
+        choices=STATUS_CHOICES,
+        default='draft',
+        verbose_name='Статус публикации'
+    )
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name='Владелец',
+        related_name='products'
+    )
+
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
+        permissions = [
+            ("can_unpublish_product", "Может отменять публикацию продукта"),
+        ]
 
 
 class Contact(models.Model):

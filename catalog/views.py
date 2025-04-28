@@ -3,7 +3,10 @@ from django.urls import reverse_lazy
 from .models import Product
 from .forms import ProductForm
 from django.urls import reverse
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib import messages
+from django.views import View
 
 class HomeView(ListView):
     model = Product
@@ -39,13 +42,48 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     template_name = 'catalog/product_create.html'
     success_url = reverse_lazy('home')
 
+    def form_valid(self, form):
+        form.instance.owner = self.request.user  # <--- вот это важно!
+        return super().form_valid(form)
+
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
     success_url = reverse_lazy('home')
 
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.owner != request.user:
+            from django.core.exceptions import PermissionDenied
+            raise PermissionDenied("Редактировать продукт может только владелец.")
+        return super().dispatch(request, *args, **kwargs)
+
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'catalog/product_confirm_delete.html'
     success_url = reverse_lazy('home')
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        user = request.user
+        is_moderator = user.groups.filter(name='Модератор продуктов').exists()
+        if obj.owner != user and not is_moderator:
+            from django.core.exceptions import PermissionDenied
+            raise PermissionDenied("Удалять продукт может только владелец или модератор.")
+        return super().dispatch(request, *args, **kwargs)
+
+
+class ProductUnpublishView(PermissionRequiredMixin, LoginRequiredMixin, View):
+    permission_required = 'catalog.can_unpublish_product'
+
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        # Только если пользователь — модератор с этим правом
+        if request.user.has_perm('catalog.can_unpublish_product'):
+            product.status = 'unpublished'
+            product.save()
+            messages.success(request, 'Продукт снят с публикации.')
+        else:
+            messages.error(request, 'У вас нет прав для снятия продукта с публикации.')
+        return redirect('product_detail', pk=pk)

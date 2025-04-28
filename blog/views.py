@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from .models import BlogPost
 from .forms import BlogPostForm
-
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 class BlogListView(ListView):
     model = BlogPost
@@ -35,25 +35,26 @@ class BlogDetailView(DetailView):
             )
         return obj
 
+# --- Только контент-менеджеры ---
 
-class BlogCreateView(CreateView):
+class BlogCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     model = BlogPost
     form_class = BlogPostForm
     template_name = 'blog/blog_form.html'
     success_url = reverse_lazy('blog_list')
+    permission_required = 'blog.add_blogpost'
 
-
-class BlogUpdateView(UpdateView):
+class BlogUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     model = BlogPost
     form_class = BlogPostForm
     template_name = 'blog/blog_form.html'
+    permission_required = 'blog.change_blogpost'
 
     def get_success_url(self):
         return self.object.get_absolute_url()
 
-
-class BlogDeleteView(DeleteView):
+class BlogDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     model = BlogPost
     template_name = 'blog/blog_confirm_delete.html'
     success_url = reverse_lazy('blog_list')
-
+    permission_required = 'blog.delete_blogpost'
