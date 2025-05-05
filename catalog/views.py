@@ -7,6 +7,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.views import View
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from django.views.generic import DetailView
+from django.views.generic import ListView
+from django.shortcuts import get_object_or_404
+from .models import Category
+from .services import get_products_by_category
+
 
 class HomeView(ListView):
     model = Product
@@ -28,7 +36,7 @@ class ContactView(TemplateView):
             success = True
         return self.render_to_response({'success': success})
 
-
+@method_decorator(cache_page(60 * 15), name='dispatch')  # кеш 15 минут
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'catalog/product_detail.html'
@@ -87,3 +95,17 @@ class ProductUnpublishView(PermissionRequiredMixin, LoginRequiredMixin, View):
         else:
             messages.error(request, 'У вас нет прав для снятия продукта с публикации.')
         return redirect('product_detail', pk=pk)
+
+class CategoryProductListView(ListView):
+    template_name = 'catalog/category_products.html'
+    context_object_name = 'products'
+    paginate_by = 20
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, slug=self.kwargs['slug'])
+        return get_products_by_category(self.category.slug)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['category'] = self.category
+        return ctx
