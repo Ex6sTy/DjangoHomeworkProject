@@ -20,9 +20,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'category', 'preview_image')
-    readonly_fields = ('preview_image',)
-    inlines = [ProductImageInline]
+    list_display = ('id', 'name', 'price', 'category', 'owner', 'status', 'image')
+    list_filter = ('category', 'status')
+    search_fields = ('name', 'description')
+    fields = ('name', 'description', 'image', 'category', 'price', 'status', 'owner')
+
 
     def preview_image(self, obj):
         if obj.image:
