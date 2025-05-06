@@ -14,6 +14,7 @@ from django.views.generic import ListView
 from django.shortcuts import get_object_or_404
 from .models import Category
 from .services import get_products_by_category
+from django.core.cache import cache
 
 
 class HomeView(ListView):
@@ -23,6 +24,20 @@ class HomeView(ListView):
     template_name = 'catalog/home.html'
     context_object_name = 'page_obj'
 
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'catalog/product_list.html'
+    context_object_name = 'products'
+    paginate_by = 20
+
+    def get_queryset(self):
+        cache_key = 'all_products_list'
+        products = cache.get(cache_key)
+        if products is None:
+            products = Product.objects.filter(status='published').order_by('-created_at')
+            cache.set(cache_key, products, 60 * 15)
+        return products
 
 class ContactView(TemplateView):
     template_name = 'catalog/contacts.html'
